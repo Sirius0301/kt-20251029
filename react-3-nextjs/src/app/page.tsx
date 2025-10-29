@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [count, setCount] = useState(0);
@@ -37,6 +38,46 @@ export default function Home() {
           <p className="text-xl text-gray-600 dark:text-gray-300">
             Built with React Server Components, App Router, and TypeScript
           </p>
+        </div>
+
+        {/* Demo Navigation */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+          <Link href="/about" className="block rounded-lg bg-white dark:bg-gray-800 p-4 shadow hover:shadow-md transition">
+            <div className="font-semibold text-gray-900 dark:text-white">About (File routing)</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">src/app/about/page.tsx</div>
+          </Link>
+          <Link href="/blog/hello-next" className="block rounded-lg bg-white dark:bg-gray-800 p-4 shadow hover:shadow-md transition">
+            <div className="font-semibold text-gray-900 dark:text-white">Dynamic Route</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">src/app/blog/[slug]/page.tsx</div>
+          </Link>
+          <Link href="/ssr" className="block rounded-lg bg-white dark:bg-gray-800 p-4 shadow hover:shadow-md transition">
+            <div className="font-semibold text-gray-900 dark:text-white">SSR</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">fetch({"{ cache: 'no-store' }"})</div>
+          </Link>
+          <Link href="/ssg" className="block rounded-lg bg-white dark:bg-gray-800 p-4 shadow hover:shadow-md transition">
+            <div className="font-semibold text-gray-900 dark:text-white">SSG + ISR</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">revalidate = 60</div>
+          </Link>
+          <Link href="/products/1" className="block rounded-lg bg-white dark:bg-gray-800 p-4 shadow hover:shadow-md transition">
+            <div className="font-semibold text-gray-900 dark:text-white">Dynamic SSG</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">generateStaticParams()</div>
+          </Link>
+          <Link href="/api/hello" className="block rounded-lg bg-white dark:bg-gray-800 p-4 shadow hover:shadow-md transition">
+            <div className="font-semibold text-gray-900 dark:text-white">API Route</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">app/api/hello/route.ts</div>
+          </Link>
+          <Link href="/images" className="block rounded-lg bg-white dark:bg-gray-800 p-4 shadow hover:shadow-md transition">
+            <div className="font-semibold text-gray-900 dark:text-white">Image Optimization</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">next/image</div>
+          </Link>
+          <Link href="/rsc" className="block rounded-lg bg-white dark:bg-gray-800 p-4 shadow hover:shadow-md transition">
+            <div className="font-semibold text-gray-900 dark:text-white">RSC + Client</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">Server + 'use client' Counter</div>
+          </Link>
+          <Link href="/slow" className="block rounded-lg bg-white dark:bg-gray-800 p-4 shadow hover:shadow-md transition">
+            <div className="font-semibold text-gray-900 dark:text-white">Loading/Error UI</div>
+            <div className="text-sm text-gray-600 dark:text-gray-300">loading.tsx / error.tsx</div>
+          </Link>
         </div>
 
         {/* Features */}
