@@ -1,10 +1,11 @@
 import { StrictMode, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './index.css';
 
 interface Post { id: number; title: string; body: string }
 
-function App() {
+function Home() {
   const [count, setCount] = useState(0);
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
@@ -55,8 +56,29 @@ function App() {
   );
 }
 
+function About() {
+  return (
+    <div style={{ fontFamily: 'ui-sans-serif, system-ui', padding: 24 }}>
+      <h1 style={{ fontSize: 36, fontWeight: 700, marginBottom: 8 }}>About</h1>
+      <p style={{ color: '#4b5563', marginBottom: 24 }}>This is a simple secondary route to demonstrate client-side routing.</p>
+      <p>Built with React + TypeScript + Webpack (traditional setup).</p>
+    </div>
+  );
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <div style={{ padding: 16, background: '#111827' }}>
+        <nav style={{ display: 'flex', gap: 12 }}>
+          <Link to="/" style={{ color: 'white' }}>Home</Link>
+          <Link to="/about" style={{ color: 'white' }}>About</Link>
+        </nav>
+      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   </StrictMode>
 );
