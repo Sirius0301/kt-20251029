@@ -1,58 +1,71 @@
-## react-traditional — React + TypeScript + Webpack demo
+## React Traditional — React + TypeScript + Webpack
 
-This app demonstrates a minimal, framework-free React setup using Webpack + TypeScript. It mirrors the same demo behaviors (counter + client-side data fetching) to compare with the Next.js and Vite projects.
+A minimal React setup using **TypeScript** and **Webpack**, built to demonstrate a traditional (framework-free) frontend stack.  
+It mirrors the same counter and client-side fetch demos used in Next.js and Vite projects.
 
-### How to run
+---
 
-- `npm run dev` — start the webpack dev server (configured on `http://localhost:5174`)
-- `npm run build` — production build to `dist/`
+### 🚀 Run the Project
 
-### Important configuration files
+```bash
+npm run dev     # Start dev server (http://localhost:5174)
+npm run build   # Build production bundle to /dist
+````
 
-- `package.json`
-  - Scripts for dev/build and project dependencies.
+---
 
-- `webpack.config.js`
-  - Entry: `src/index.tsx`
-  - Output: `dist/bundle.[contenthash].js`
-  - Loaders: `ts-loader` for TypeScript, `style-loader` + `css-loader` for CSS
-  - Dev server: port `5174`, HMR enabled, `historyApiFallback` for SPA routing
-  - Plugins: `HtmlWebpackPlugin` to inject the bundle into `public/index.html`
+### ⚙️ Key Config Files
 
-- `tsconfig.json`
-  - TypeScript compiler options for React and bundler output
-  - Uses `jsx: "react-jsx"` and sets `noEmit: false` so Webpack can emit compiled JS
+* **webpack.config.js**
 
-- `public/index.html`
-  - HTML entry used by `HtmlWebpackPlugin`. The React app mounts at `<div id="root"></div>`
+  * Entry: `src/index.tsx`
+  * Output: `dist/bundle.[contenthash].js`
+  * Loaders: `ts-loader`, `style-loader`, `css-loader`
+  * Dev server: port `5174`, HMR enabled, SPA routing via `historyApiFallback`
+  * Plugins: `HtmlWebpackPlugin` injects bundle into `public/index.html`
 
-### Key folders and what they do
+* **tsconfig.json**
 
-- `src/`
-  - `index.tsx`: App bootstrap + demo UI (counter and client-side data fetching)
-  - `index.css`: Basic styles to keep visual parity with other demos
-  - Add more components and routes here; for routing, add React Router manually
+  * Uses `"jsx": "react-jsx"`
+  * `"noEmit": false` to allow Webpack to emit compiled JS
 
-- `public/`
-  - Static HTML template (and other static assets if needed)
+* **package.json**
 
-- `dist/`
-  - Production build output (generated). Safe to delete; it will be recreated by `npm run build`.
+  * Defines build/dev scripts and dependencies
 
-### Notes for React developers
+---
 
-- This project is client-side rendered (CSR) with full control over the bundler (webpack). There is no built-in routing or SSR; add them explicitly if needed.
-- You can introduce Tailwind, CSS Modules, or SASS by extending `webpack.config.js` with the appropriate loaders/plugins.
+### 📁 Project Structure
 
-### Troubleshooting
+```
+src/
+  index.tsx       # App bootstrap + demo UI (counter + data fetch demo)
+  index.css       # Basic styles
 
-- Type errors that mention missing React types:
-  - Ensure `@types/react` and `@types/react-dom` are installed and that `tsconfig.json` includes React JSX settings.
+public/
+  index.html      # HTML template (root mount point)
 
-- Build emits nothing (`TypeScript emitted no output`):
-  - Set `"noEmit": false` in `tsconfig.json` so webpack can emit compiled JS.
+dist/
+  ...             # Auto-generated build output
+```
 
-- Port conflicts:
-  - Change the dev server port in `webpack.config.js` under `devServer.port`.
+---
 
+### 💡 Notes
 
+* This project uses **Client-Side Rendering (CSR)** only.
+* Add **React Router**, **Tailwind**, or **SASS** manually if needed.
+* For routing or SSR, use frameworks like **Next.js**.
+
+---
+
+### 🧩 Common Issues
+
+* **Missing React types**
+  → Install `@types/react` and `@types/react-dom`
+
+* **No emitted JS**
+  → Ensure `"noEmit": false` in `tsconfig.json`
+
+* **Port conflicts**
+  → Change `devServer.port` in `webpack.config.js`
